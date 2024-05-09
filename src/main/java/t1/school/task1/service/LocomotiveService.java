@@ -47,6 +47,7 @@ public class LocomotiveService {
     }
 
     @TrackAsyncTime
+    //@Transactional
     @Async
     @Scheduled(initialDelay = 5_000, fixedDelay = 10_000)
     public void addLocomotiveWithCheckTask() {
