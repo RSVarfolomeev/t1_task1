@@ -1,14 +1,13 @@
 package t1.school.task1.service;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import t1.school.task1.model.MethodTimeTracker;
 import t1.school.task1.model.dto.MethodAverageTimeResponseDto;
 import t1.school.task1.model.dto.MethodSumTimeResponseDto;
 import t1.school.task1.repository.MethodTimeTrackerRepository;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 @Service
 public class MethodTimeTrackerService {
@@ -19,14 +18,9 @@ public class MethodTimeTrackerService {
         this.methodExecutionRepository = methodExecutionRepository;
     }
 
-//    @Transactional
+    @Async
     public void save(MethodTimeTracker methodTimeTracker) {
-        CompletableFuture.runAsync(() -> {
-            //    int i = 1;
-//            if (i==1)
-//                throw new RuntimeException("Exception in addLocomotiveWithCheckTask");
-            methodExecutionRepository.save(methodTimeTracker);
-        });
+        methodExecutionRepository.save(methodTimeTracker);
     }
 
     public List<MethodAverageTimeResponseDto> getAverageMethodsTime() {

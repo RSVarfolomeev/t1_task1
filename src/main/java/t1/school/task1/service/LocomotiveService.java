@@ -6,7 +6,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import t1.school.task1.annotations.TrackTime;
 import t1.school.task1.annotations.TrackAsyncTime;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import t1.school.task1.model.Locomotive;
 import t1.school.task1.model.enums.LocomotiveSeries;
 import t1.school.task1.repository.LocomotiveRepository;
@@ -27,13 +26,11 @@ public class LocomotiveService {
     }
 
     @TrackTime
-    @Transactional
     public void addLocomotive(Locomotive locomotive) {
         locomotiveRepository.save(locomotive);
     }
 
     @TrackAsyncTime
-    @Transactional
     public void addLocomotiveWithCheck(Locomotive locomotive) {
         CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
             log.info("Start addLocomotiveWithCheck runAsync.");
@@ -47,7 +44,6 @@ public class LocomotiveService {
     }
 
     @TrackAsyncTime
-    //@Transactional
     @Async
     @Scheduled(initialDelay = 5_000, fixedDelay = 10_000)
     public void addLocomotiveWithCheckTask() {
