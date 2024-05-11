@@ -50,7 +50,7 @@ Unit-тесты расположены в пакете:
 
 # Запуск приложения для проверки
 1. ОС Windows 10: приложение можно запустить вместе с СУБД Postgresql с помощью Docker. Для этого необходимо:
-- Скачиваем архив с master-ветки репозитория проекта по следующему адресу:
+- Скачать архив с master-ветки репозитория проекта по следующему адресу:
    ```
    https://github.com/RSVarfolomeev/t1_task1/archive/refs/heads/master.zip
    ```
@@ -65,7 +65,7 @@ Unit-тесты расположены в пакете:
    ```
    https://docs.docker.com/engine/install/centos/
    ```
-- Создаем папку дли клонирования проекта, клонируем master-ветку репозитория с проектом:
+- Создаем папку для клонирования проекта, клонируем master-ветку репозитория с проектом:
    ```
    mkdir /opt/app
    git clone https://github.com/RSVarfolomeev/t1_task1.git /opt/app
@@ -88,7 +88,7 @@ Unit-тесты расположены в пакете:
    https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
    https://www.jetbrains.com/idea/download/?section=windows
    ```
-- В IntelliJ IDEA открываем склонированный проект и запускаем.
+- В IntelliJ IDEA открываем распакованный проект и запускаем.
 - После запуска проекта приложение будет доступно на порту 8080, СУБД Postgresql на дефолтном порту 5432.
 ---
 #### Используемый стек технологий:
