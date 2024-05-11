@@ -6,7 +6,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
-import t1.school.task1.model.MethodTimeTracker;
 import t1.school.task1.service.MethodTimeTrackerService;
 
 
@@ -21,19 +20,23 @@ public class TimeTrackerAspect {
     }
 
     @Pointcut("@annotation(t1.school.task1.annotations.TrackTime)")
-    public void trackTimePoincut() {
+    public void trackTimePointcut() {
     }
 
-    @Around("trackTimePoincut()")
-    public Object trackTime(ProceedingJoinPoint joinPoint) {
+    @Pointcut("@annotation(t1.school.task1.annotations.TrackAsyncTime)")
+    public void trackAsyncTimePointcut() {
+    }
+
+    @Around("trackTimePointcut() || trackAsyncTimePointcut()")
+    public Object trackAsyncTime(ProceedingJoinPoint joinPoint) {
         long startTime = System.currentTimeMillis();
         String methodName = joinPoint.getSignature().getName();
         log.info("Запущен метод: {}.", methodName);
         try {
             Object proceed = joinPoint.proceed();
-            long timeToExecute = System.currentTimeMillis() - startTime;
-            log.info("Выполнен метод {} за {} мс.", methodName, timeToExecute);
-            methodTimeTrackerService.save(new MethodTimeTracker(methodName, timeToExecute));
+            long executionTime = System.currentTimeMillis() - startTime;
+            log.info("Выполнен метод {} за {} мс.", methodName, executionTime);
+            methodTimeTrackerService.save(methodName, executionTime);
             return proceed;
         } catch (Throwable e) {
             log.error("При выполнении метода {} произошла ошибка: ", methodName, e);

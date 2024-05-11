@@ -1,14 +1,15 @@
 package t1.school.task1.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "method_time_tracker")
 @Getter
 @Setter
+@Builder
+@ToString
+@AllArgsConstructor
 @NoArgsConstructor
 public class MethodTimeTracker {
 
@@ -19,10 +20,5 @@ public class MethodTimeTracker {
     @Column(name = "method_name")
     private String methodName;
     @Column(name = "execution_time")
-    private long executionTime;
-
-    public MethodTimeTracker(String methodName, long executionTime) {
-        this.methodName = methodName;
-        this.executionTime = executionTime;
-    }
+    private Long executionTime;
 }

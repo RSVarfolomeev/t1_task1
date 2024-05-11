@@ -1,9 +1,7 @@
 package t1.school.task1.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import t1.school.task1.model.enums.LocomotiveSeries;
 
@@ -13,6 +11,9 @@ import java.sql.Timestamp;
 @Table(name = "locomotives")
 @Getter
 @Setter
+@Builder
+@ToString
+@AllArgsConstructor
 @NoArgsConstructor
 public class Locomotive {
 
@@ -21,16 +22,11 @@ public class Locomotive {
     @Column(name = "id")
     private Long id;
     @Enumerated(EnumType.STRING)
-    @Column(name = "locomotive_series")
+    @Column(name = "locomotive_series", nullable = false)
     private LocomotiveSeries locomotiveSeries;
-    @Column(name = "locomotive_number")
-    private int locomotiveNumber;
+    @Column(name = "locomotive_number", nullable = false)
+    private Integer locomotiveNumber;
     @CreationTimestamp
     @Column(name = "date_of_added")
     private Timestamp dateOfAdded;
-
-    public Locomotive(LocomotiveSeries locomotiveSeries, int locomotiveNumber) {
-        this.locomotiveSeries = locomotiveSeries;
-        this.locomotiveNumber = locomotiveNumber;
-    }
 }

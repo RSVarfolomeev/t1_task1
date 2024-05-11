@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+@Builder
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MethodSumTimeResponseDto {
@@ -15,5 +16,5 @@ public class MethodSumTimeResponseDto {
     private Long executionCount;
 
     @JsonProperty("Суммарное время выполнения, мс")
-    private double averageTime;
+    private double sumTime;
 }

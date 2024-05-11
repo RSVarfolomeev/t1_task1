@@ -24,9 +24,14 @@
    src/main/java/t1/school/task1/aspect
    ```
 
-Таблицы БД создаются с помощью скрипта Liquibase
+Таблицы БД создаются с помощью скрипта Liquibase:
    ```
-src/main/resources/db/changelog/liquibase.xml
+   src/main/resources/db/changelog/liquibase.xml
+   ```
+
+Unit-тесты расположены в пакете:
+   ```
+   src/test/java/t1/school/task1
    ```
 
 # REST API

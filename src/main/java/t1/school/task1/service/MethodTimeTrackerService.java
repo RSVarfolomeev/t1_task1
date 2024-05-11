@@ -8,6 +8,7 @@ import t1.school.task1.model.dto.MethodSumTimeResponseDto;
 import t1.school.task1.repository.MethodTimeTrackerRepository;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class MethodTimeTrackerService {
@@ -19,8 +20,11 @@ public class MethodTimeTrackerService {
     }
 
     @Async
-    public void save(MethodTimeTracker methodTimeTracker) {
-        methodExecutionRepository.save(methodTimeTracker);
+    public CompletableFuture<MethodTimeTracker> save(String methodName, Long executionTime) {
+        return CompletableFuture.completedFuture(methodExecutionRepository.save(MethodTimeTracker.builder()
+                .methodName(methodName)
+                .executionTime(executionTime)
+                .build()));
     }
 
     public List<MethodAverageTimeResponseDto> getAverageMethodsTime() {
