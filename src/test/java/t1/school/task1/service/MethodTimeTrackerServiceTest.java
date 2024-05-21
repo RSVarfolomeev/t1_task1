@@ -77,7 +77,7 @@ class MethodTimeTrackerServiceTest {
         List<MethodAverageTimeResponseDto> methodAverageTimeResponseDtoList = methodTimeTrackerService.getAverageMethodsTime();
 
         Assertions.assertNotNull(methodAverageTimeResponseDtoList);
-        Assertions.assertEquals(methodAverageTimeResponseDtoList.size(), 3);
+        Assertions.assertEquals(3, methodAverageTimeResponseDtoList.size());
     }
 
     @Test
@@ -106,6 +106,6 @@ class MethodTimeTrackerServiceTest {
         List<MethodSumTimeResponseDto> methodSumTimeResponseDtoList = methodTimeTrackerService.getSumMethodsTime();
 
         Assertions.assertNotNull(methodSumTimeResponseDtoList);
-        Assertions.assertEquals(methodSumTimeResponseDtoList.size(), 3);
+        Assertions.assertEquals(3, methodSumTimeResponseDtoList.size());
     }
 }
